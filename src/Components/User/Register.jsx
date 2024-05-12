@@ -1,7 +1,52 @@
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/Auth";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
+     const {register, updatePP}= useContext(AuthContext)
+     // const  [ showPassword,setShowPassword]=useState(false)
+     const [success,setSuccess]= useState('')
+     const [error, setError] = useState('') 
+     const handleRegister = (e) => {
+          e.preventDefault()
+          const email = e.target.email.value
+          const password = e.target.password.value
+          const name = e.target.name.value
+          const photo = e.target.photo.value
+          console.log(email, password, name, photo)
+          if (/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)) {
+            
+               register(email, password)
+               .then(() => {
+                  updatePP(name,photo)
+                  setSuccess(
+                  
+                    Swal.fire({
+                         title: "Register done!",
+                         text: " success fully register.",
+                         icon: "success"
+     
+                    })
+                  
+                  )
+                
+               })
+          }
+          else{
+               setError(
+                    Swal.fire({
+                         icon: "error",
+                         title: " Give me valid pass",
+                         text: "valid password"
+                      
+                       }))
+               return
+          }
+           
+            setError('') 
+     }
      return (
           <div>
                <div className="mt-7 mb-9">
@@ -21,11 +66,11 @@ const Register = () => {
                                              <h1 className="my-3 text-4xl font-bold text-yellow-400"> Register</h1>
                                              <p className="text-sm dark:text-gray-600"> Register to create your account</p>
                                         </div>
-                                        <form noValidate="" action="" className="space-y-12">
+                                        <form onSubmit={handleRegister} noValidate="" action="" className="space-y-12">
                                              <div className="space-y-4">
                                                   <div>
                                                        <label htmlFor="name" className="block mb-2 text-sm">Name</label>
-                                                       <input type="text" name="name" id="email" placeholder="enter your name" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                                                       <input type="text" name="name" id="name" placeholder="enter your name" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
                                                   </div>
                                                   <div>
                                                        <label htmlFor="email" className="block mb-2 text-sm">Email address</label>
@@ -38,16 +83,22 @@ const Register = () => {
                                                        </div>
                                                        <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
                                                   </div>
+                                                  <div>
+                                                       <div className="flex justify-between mb-2">
+                                                            <label htmlFor="photo" className="text-sm"> Photo Url</label>
+                                                          
+                                                       </div>
+                                                       <input type="text" name="photo" id="photo" placeholder="photo Url" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                                                  </div>
                                              </div>
                                              <div className="space-y-2">
-                                                  <div>
-                                                       <button type="button" className="w-full px-8 py-3 font-semibold rounded-md dark:bg-green-600 dark:text-gray-50">Register</button>
-                                                  </div>
-                                                  <p className="px-6 text-sm text-center dark:text-gray-600"> Already have an account yet?
-                                                       <NavLink to={'/login'}><a rel="noopener noreferrer"  className="hover:underline text-xl font-bold dark:text-green-600"> Login. </a></NavLink>
-                                                  </p>
+                                                  <input type="submit" className="btn btn-success w-full" value="Register" />
+                                                 
                                              </div>
                                         </form>
+                                        <p className="px-6 text-sm text-center dark:text-gray-600"> Already have an account yet?
+                                                       <NavLink to={'/login'}><a rel="noopener noreferrer"  className="hover:underline text-xl font-bold dark:text-green-600"> Login. </a></NavLink>
+                                                  </p>
                                    </div>
                               </div>
                          </div>

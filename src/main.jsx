@@ -13,6 +13,7 @@ import ManageMyFood from './Components/ShareNavbar/ManageMyFood';
 import MyFoodRequest from './Components/ShareNavbar/MyFoodRequest';
 import Login from './Components/User/Login';
 import Register from './Components/User/Register';
+import Auth from './AuthProvider/Auth';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +55,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Auth><RouterProvider router={router} /></Auth>
   </React.StrictMode>,
 )
