@@ -11,6 +11,7 @@ import AddFood from './Components/ShareNavbar/AddFood';
 import AvailableFood from './Components/ShareNavbar/AvailableFood';
 import ManageMyFood from './Components/ShareNavbar/ManageMyFood';
 import MyFoodRequest from './Components/ShareNavbar/MyFoodRequest';
+import Login from './Components/User/Login';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +38,9 @@ const router = createBrowserRouter([
       {
         path:'/myFoodRequest',
         element: <MyFoodRequest></MyFoodRequest>
+      },{
+        path:'/login',
+        element: <Login></Login>
       }
     ]
   },

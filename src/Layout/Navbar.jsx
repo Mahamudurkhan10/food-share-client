@@ -67,7 +67,7 @@ const Navbar = () => {
             </Link>
           )
         } */}
-        <NavLink><button className="btn btn-success   btn-outline  rounded-xl"> Login </button></NavLink>
+        <NavLink to={'/login'}><button className="btn btn-success   btn-outline  rounded-xl"> Login </button></NavLink>
       </div>
     </div>
   );
