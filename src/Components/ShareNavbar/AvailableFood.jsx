@@ -5,18 +5,19 @@ import { NavLink } from "react-router-dom";
 
 const AvailableFood = () => {
      const [foods, setFoods] = useState([])
+    
      useEffect(() => {
           axios('http://localhost:5000/foods')
                .then(res => setFoods(res.data))
      }, [])
      return (
           <div>
-               <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1">
+               <div className="grid mb-8 gap-5 md:grid-cols-2 lg:grid-cols-3 grid-cols-1">
                     {
                          foods.map(food => <div key={food._id}>
 
-                              <div className="mt-7">
-                                   <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
+                              <div className="mt-7 ">
+                                   <div className="flex h-[750px] flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
                                         <div className="flex space-x-4">
                                              <img alt="" src={food.donator_image} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                                              <div className="flex flex-col text-xl font-bold text-green-400 space-y-1">
