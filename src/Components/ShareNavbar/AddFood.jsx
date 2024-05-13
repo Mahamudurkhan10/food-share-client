@@ -44,7 +44,7 @@ const AddFood = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="photo" className="input input-bordered text-sm w-full join-item" defaultValue={user?.photoURL} disabled placeholder="Photo URL" />
+                                   <input type="text" name="photo" className="input input-bordered text-sm w-full join-item" defaultValue={user?.photoURL} disabled placeholder=" Donator Photo URL" />
 
                               </div>
 
@@ -56,7 +56,7 @@ const AddFood = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="foodPhoto" className="input input-bordered text-sm w-full join-item" placeholder="Photo URL" />
+                                   <input type="text" name="foodPhoto" className="input input-bordered text-sm w-full join-item" placeholder=" Food Photo URL" />
 
                               </div>
 
@@ -70,7 +70,7 @@ const AddFood = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="foodName" className="input input-bordered text-sm w-full join-item" placeholder="subcategory_Name" />
+                                   <input type="text" name="foodName" className="input input-bordered text-sm w-full join-item" placeholder="Food Name" />
 
                               </div>
 
@@ -81,7 +81,7 @@ const AddFood = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="additionalNotes" className="input input-bordered text-sm w-full join-item" placeholder="short description" />
+                                   <input type="text" name="additionalNotes" className="input input-bordered text-sm w-full join-item" placeholder=" Additional notes " />
 
                               </div>
 
@@ -94,7 +94,7 @@ const AddFood = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="foodQuantity" className="input input-bordered text-sm w-full join-item" placeholder="Price" />
+                                   <input type="text" name="foodQuantity" className="input input-bordered text-sm w-full join-item" placeholder="Food Quantity" />
 
                               </div>
 
@@ -107,7 +107,7 @@ const AddFood = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="pickupLocation" className="input input-bordered text-sm w-full join-item" placeholder=" ratining" />
+                                   <input type="text" name="pickupLocation" className="input input-bordered text-sm w-full join-item" placeholder=" Pickup Location" />
 
                               </div>
 
@@ -120,7 +120,7 @@ const AddFood = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="expiredDate" className="input input-bordered text-sm w-full join-item" placeholder="Processing time" />
+                                   <input type="text" name="expiredDate" className="input input-bordered text-sm w-full join-item" placeholder="Expired Date" />
 
                               </div>
 
