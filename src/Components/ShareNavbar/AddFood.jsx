@@ -1,16 +1,46 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/Auth";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const AddFood = () => {
      const { user } = useContext(AuthContext)
-     console.log(user)
+    
+ const handleAdd = (e)=>{
+     e.preventDefault()
+     const form = e.target;
+     const donator_email = e.target.email.value;
+     const donator_name = e.target.name.value;
+     const donator_image = e.target.photo.value;
+     const food_image = e.target.foodPhoto.value;
+     const food_name = e.target.foodName.value;
+     const additional_notes = e.target.additionalNotes.value;
+     const   expired_date = e.target.expiredDate.value;
+     const  pickup_location = e.target.pickupLocation.value;
+     const food_quantity = e.target.foodQuantity.value;
+     const foodStatus = e.target.foodStatus.value;
+     const donatedFoods = {donator_email,donator_name,donator_image,food_image,food_name,additional_notes,expired_date,pickup_location,food_quantity,foodStatus}
+     console.log(donatedFoods);
+     axios.post('http://localhost:5000/foods',donatedFoods)
+     .then(res =>{
+          if(res.data.insertedId){
+               Swal.fire({
+                    title: "Added!",
+                    text: "Your Craft has been Add Successfully.",
+                    icon: "success"
+
+               });
+               form.reset()
+          }
+      } )
+ }
      return (
           <div className="px-24 py-8 bg-gray-500 font-bold lg:bg-gray-300">
                <div>
                     <h1 className="text-3xl mb-4 font-extrabold text-green-600 text-center"> Add Donated Food  </h1>
                </div>
-               <form action="">
+               <form onSubmit={handleAdd} action="">
                     <div className="lg:flex gap-6">
                          <div className='form-control lg:w-1/2'>
                               <label htmlFor="" className='label'>
@@ -120,7 +150,7 @@ const AddFood = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="expiredDate" className="input input-bordered text-sm w-full join-item" placeholder="Expired Date" />
+                                   <input type="date" name="expiredDate" className="input input-bordered text-sm w-full join-item" placeholder="Expired Date" />
 
                               </div>
 

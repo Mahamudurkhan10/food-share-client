@@ -14,6 +14,7 @@ import MyFoodRequest from './Components/ShareNavbar/MyFoodRequest';
 import Login from './Components/User/Login';
 import Register from './Components/User/Register';
 import Auth from './AuthProvider/Auth';
+import FoodCardDetails from './Pages/FoodCardDetails';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element:<Register></Register>
+      },{
+        path:'/food/:id',
+        element:<FoodCardDetails></FoodCardDetails>,
+        loader:({params})=> fetch(`http://localhost:5000/food/${params.id}`)  
       }
     ]
   },
