@@ -25,8 +25,8 @@ const Update = () => {
           .then(res =>{
                if(res.data.insertedId){
                     Swal.fire({
-                         title: "Added!",
-                         text: "Your Craft has been Add Successfully.",
+                         title: "Update!",
+                         text: "Your food has been Update Successfully.",
                          icon: "success"
      
                     });

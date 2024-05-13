@@ -27,7 +27,7 @@ const AddFood = () => {
           if(res.data.insertedId){
                Swal.fire({
                     title: "Added!",
-                    text: "Your Craft has been Add Successfully.",
+                    text: "Your food has been Add Successfully.",
                     icon: "success"
 
                });
