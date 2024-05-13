@@ -2,9 +2,19 @@ import axios from "axios";
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/Auth";
+import { useLoaderData } from "react-router-dom";
 
 
 const Update = () => {
+     const food = useLoaderData()
+     const { food_name,
+          food_image,
+          food_quantity,
+          pickup_location,
+          expired_date,
+          additional_notes,_id
+         } = food;
+
      const { user} = useContext(AuthContext)
      const handleUpdate = (e)=>{
           e.preventDefault()
@@ -21,16 +31,16 @@ const Update = () => {
           const foodStatus = e.target.foodStatus.value;
           const donatedFoods = {email,donator_name,donator_image,food_image,food_name,additional_notes,expired_date,pickup_location,food_quantity,foodStatus}
           console.log(donatedFoods);
-          axios.put('http://localhost:5000/foods', donatedFoods)
+          axios.put(`http://localhost:5000/foods/${_id}`, donatedFoods)
           .then(res =>{
-               if(res.data.insertedId){
+               if(res.data.modifiedCount > 0){
                     Swal.fire({
                          title: "Update!",
                          text: "Your food has been Update Successfully.",
                          icon: "success"
      
                     });
-                    form.reset()
+                   
                }
            } )
       }
@@ -86,7 +96,7 @@ const Update = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="foodPhoto" className="input input-bordered text-sm w-full join-item" placeholder=" Food Photo URL" />
+                                   <input type="text" name="foodPhoto" className="input input-bordered text-sm w-full join-item" defaultValue={food_image} placeholder=" Food Photo URL" />
 
                               </div>
 
@@ -100,7 +110,7 @@ const Update = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="foodName" className="input input-bordered text-sm w-full join-item" placeholder="Food Name" />
+                                   <input type="text" name="foodName" className="input input-bordered text-sm w-full join-item" defaultValue={food_name} placeholder="Food Name" />
 
                               </div>
 
@@ -111,7 +121,7 @@ const Update = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="additionalNotes" className="input input-bordered text-sm w-full join-item" placeholder=" Additional notes " />
+                                   <input type="text" name="additionalNotes" className="input input-bordered text-sm w-full join-item" defaultValue={additional_notes} placeholder=" Additional notes " />
 
                               </div>
 
@@ -124,7 +134,7 @@ const Update = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="foodQuantity" className="input input-bordered text-sm w-full join-item" placeholder="Food Quantity" />
+                                   <input type="text" name="foodQuantity" className="input input-bordered text-sm w-full join-item" defaultValue={food_quantity} placeholder="Food Quantity" />
 
                               </div>
 
@@ -137,7 +147,7 @@ const Update = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="text" name="pickupLocation" className="input input-bordered text-sm w-full join-item" placeholder=" Pickup Location" />
+                                   <input type="text" name="pickupLocation" className="input input-bordered text-sm w-full join-item" defaultValue={pickup_location} placeholder=" Pickup Location" />
 
                               </div>
 
@@ -150,7 +160,7 @@ const Update = () => {
                               </label>
                               <div className="join">
 
-                                   <input type="date" name="expiredDate" className="input input-bordered text-sm w-full join-item" placeholder="Expired Date" />
+                                   <input type="date" name="expiredDate" className="input input-bordered text-sm w-full join-item" defaultValue={expired_date} placeholder="Expired Date" />
 
                               </div>
 

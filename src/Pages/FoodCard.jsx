@@ -12,8 +12,8 @@ const FoodCard = ({ food }) => {
           donator_name,
           donator_email, _id } = food;
      return (
-          <div className="mt-7">
-               <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
+          <div className="mt-7 ">
+               <div className="flex flex-col h-[750px] max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
                     <div className="flex space-x-4">
                          <img alt="" src={donator_image} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                          <div className="flex flex-col text-xl font-bold text-green-400 space-y-1">

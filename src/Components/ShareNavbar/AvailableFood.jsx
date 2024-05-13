@@ -12,7 +12,7 @@ const AvailableFood = () => {
      }, [])
      return (
           <div>
-               <div className="grid mb-8 gap-5 md:grid-cols-2 lg:grid-cols-3 grid-cols-1">
+               <div className="grid mb-8 gap-4 md:grid-cols-2 lg:grid-cols-3 grid-cols-1">
                     {
                          foods.map(food => <div key={food._id}>
 

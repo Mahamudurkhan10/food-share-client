@@ -2,6 +2,8 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/Auth";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const FoodCardDetails = () => {
@@ -16,6 +18,35 @@ const FoodCardDetails = () => {
           donator_image,
           donator_name,
           donator_email, _id } = food;
+          const handleRequest = (e)=>{
+               e.preventDefault()
+               const form = e.target;
+               const email = e.target.email.value;
+               const donator_name = e.target.name.value;
+               const donator_image = e.target.photo.value;
+               const food_image = e.target.foodPhoto.value;
+               const food_name = e.target.foodName.value;
+               const additional_notes = e.target.additionalNotes.value;
+               const   expired_date = e.target.expiredDate.value;
+               const  pickup_location = e.target.pickupLocation.value;
+               const food_quantity = e.target.foodQuantity.value;
+               const foodStatus = e.target.foodStatus.value;
+               const requestDate = e.target.requestDate.value;
+               const donatedFoods = {email,donator_name,donator_image, requestDate, food_image,food_name,additional_notes,expired_date,pickup_location,food_quantity,foodStatus}
+               console.log(donatedFoods);
+               axios.post('http://localhost:5000/newFoods', donatedFoods)
+               .then(res =>{
+                    if(res.data.insertedId){
+                         Swal.fire({
+                              title: "requested!",
+                              text: "Your food has been requested Successfully.",
+                              icon: "success"
+          
+                         });
+                         form.reset()
+                    }
+                } )
+           }
      return (
           <div>
                <section className="dark:bg-gray-100 dark:text-gray-800">
@@ -39,7 +70,7 @@ const FoodCardDetails = () => {
                                    <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                                         <div className="modal-box">
                                               <h1 className="text-xl font-bold text-blue-600"> Request Box  </h1>
-                                             <form action="">
+                                             <form onSubmit={handleRequest}>
                                                   <div className="lg:flex flex-col gap-6">
                                                        <div className='form-control '>
                                                             <label htmlFor="" className='label'>
