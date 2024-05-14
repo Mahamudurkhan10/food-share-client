@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/Auth";
 import Swal from "sweetalert2";
 
@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 const Register = () => {
      const {register, updatePP}= useContext(AuthContext)
      // const  [ showPassword,setShowPassword]=useState(false)
+      const navigate = useNavigate();
+      const location = useLocation()
      const [success,setSuccess]= useState('')
      const [error, setError] = useState('') 
      const handleRegister = (e) => {
@@ -15,7 +17,7 @@ const Register = () => {
           const password = e.target.password.value
           const name = e.target.name.value
           const photo = e.target.photo.value
-          console.log(email, password, name, photo)
+        
           if (/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)) {
             
                register(email, password)
@@ -33,6 +35,7 @@ const Register = () => {
                   )
                 
                })
+               navigate(location?.state ? location.state : '/') 
           }
           else{
                setError(

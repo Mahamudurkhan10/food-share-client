@@ -17,9 +17,7 @@ const ManageMyFood = () => {
               .then(res =>{
                setFoods(res.data)
               })
-          //     .then(data => {
-          //      setFoods(data)
-          //     })
+       
      }, [user])
      const  handleDelete = (_id) => {
           console.log(_id)

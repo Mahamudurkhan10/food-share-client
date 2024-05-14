@@ -1,63 +1,78 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/Auth";
 
 
 const Login = () => {
-     const {googleLogin, loginPass,githubLogin}=useContext(AuthContext)
-     const [success,setSuccess]= useState('')
-     const [ error , setError]= useState('')
-     // const  [ showPassword,setShowPassword]=useState(false)
-     // const location =useLocation()
-     // const navigate = useNavigate()
-     const handleLoginForm = (e)=>{
-          console.log( 'click hoise');
+     const { googleLogin, loginPass, githubLogin } = useContext(AuthContext)
+     const [success, setSuccess] = useState('')
+     const [error, setError] = useState('')
+
+     const location = useLocation()
+     const navigate = useNavigate()
+     const handleLoginForm = (e) => {
+         
           e.preventDefault()
           const email = e.target.email.value;
           const password = e.target.password.value;
-     
-            loginPass(email,password)
-            .then(result =>{
-               setSuccess(
-                    Swal.fire({
-                    title: "Login done!",
-                    text: " success fully Login .",
-                    icon: "success"
 
-               })
-          )
-          // navigate(location?.state ? location.state : '/')   
-          })
-          .catch(error =>{
-               setError(error.message)
-     
-          })
+          if (/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)) {
+
+               loginPass(email, password)
+                    .then(() => {
+                      
+                         setSuccess(
+
+                              Swal.fire({
+                                   title: "Login done!",
+                                   text: " success fully Login.",
+                                   icon: "success"
+
+                              })
+
+                         )
+
+                    })
+               navigate(location?.state ? location.state : '/')
+          }
+          else {
+               setError(
+                    Swal.fire({
+                         icon: "error",
+                         title: " Give me valid pass",
+                         text: "valid password"
+
+                    }))
+               return
+          }
+
+          setError('')
      }
-     const handleGoogle = ()=>{
-       
+     const handleGoogle = () => {
+
           googleLogin()
      }
-     const handleGithub = ()=>{
+     const handleGithub = () => {
           githubLogin()
      }
      return (
           <div>
                <div className="mt-7 mb-9">
-               <div className=" mb-4 p-3 text-center bg-gray-50">
-                              <h1 className="text-5xl font-extrabold text-green-700"> Login Here  </h1>
-                         </div> 
+                    <div className=" mb-4 p-3 text-center bg-gray-50">
+                         <h1 className="text-5xl font-extrabold text-green-700"> Login Here  </h1>
+                    </div>
                     <div className="hero h-[800] bg-green-50">
-                     
+
                          <div className="hero-content flex-row w-full">
                               <div className="text-center  lg:text-left">
-                             
+
                                    <img src="https://i.ibb.co/bXbb8XZ/cloud-computing-modern-flat-concept-for-web-banner-design-man-enters-password-and-login-to-access-cl.jpg" alt="" className="size-[650px] opacity-90" />
                               </div>
                               <div className="w-1/2 max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
                                    <h2 className="mb-3 text-3xl font-bold text-yellow-400 text-center">Login to your account</h2>
                                    <p className="text-sm text-center dark:text-gray-600">Dont have account?
-                                        <NavLink to={'/register'}><a  rel="noopener noreferrer" className="focus:underline hover:underline text-green-500 text-xl font-bold"> Register here </a></NavLink>
+                                        <NavLink to={'/register'}><a rel="noopener noreferrer" className="focus:underline hover:underline text-green-500 text-xl font-bold"> Register here </a></NavLink>
                                    </p>
                                    <div className="my-6 space-y-4">
                                         <button onClick={handleGoogle} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600">
@@ -79,7 +94,7 @@ const Login = () => {
                                         <p className="px-3 dark:text-gray-600">OR</p>
                                         <hr className="w-full dark:text-gray-600" />
                                    </div>
-                                   <form onSubmit={ handleLoginForm} className="space-y-8">
+                                   <form onSubmit={handleLoginForm} className="space-y-8">
                                         <div className="space-y-4">
                                              <div className="space-y-2">
                                                   <label htmlFor="email" className=" text-sm">Email address</label>
@@ -90,11 +105,13 @@ const Login = () => {
                                                        <label htmlFor="password" className="text-sm">Password</label>
 
                                                   </div>
-                                                  <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md dark:border-yellow-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                                                  <input type="text" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+
+
                                              </div>
                                         </div>
                                         <div>
-                                        <input type="submit" className="btn btn-success w-full" value="Login" />
+                                             <input type="submit" className="btn btn-success w-full" value="Login" />
                                         </div>
                                    </form>
                               </div>

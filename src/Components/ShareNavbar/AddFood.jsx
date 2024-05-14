@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/Auth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const AddFood = () => {
@@ -31,6 +32,7 @@ const AddFood = () => {
                     icon: "success"
 
                });
+              
                form.reset()
           }
       } )
