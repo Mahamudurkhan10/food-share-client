@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/Auth";
 import { LuLogOut } from "react-icons/lu";
-
+import { MdFoodBank } from "react-icons/md";
 const Navbar = () => {
   const {user,logOut}= useContext(AuthContext)
   const [theme, setTheme] = useState('light')
@@ -46,7 +46,7 @@ const Navbar = () => {
             {Navbar}
           </ul>
         </div>
-        <NavLink to={'/'}>  <a className="btn btn-ghost text-2xl  text-green-500">  Food <span className="text-yellow-600">Sharing</span> </a></NavLink>
+        <NavLink to={'/'}>  <a className="btn btn-ghost text-2xl  text-green-500"> <MdFoodBank className="text-2xl"></MdFoodBank>  Food <span className="text-yellow-600">Sharing</span> </a></NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

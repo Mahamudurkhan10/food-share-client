@@ -17,6 +17,11 @@ import Auth from './AuthProvider/Auth';
 import FoodCardDetails from './Pages/FoodCardDetails';
 import Update from './Pages/Update';
 import Error from './Components/Home/Error';
+import {
+  
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -65,9 +70,12 @@ const router = createBrowserRouter([
   },
 ]);
 
-
+const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
     <Auth><RouterProvider router={router} /></Auth>
+    </QueryClientProvider>
+  
   </React.StrictMode>,
 )

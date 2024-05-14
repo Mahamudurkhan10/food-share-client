@@ -1,16 +1,23 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { useState } from "react";
+
 import FoodCard from "../../Pages/FoodCard";
+import { useQuery } from "@tanstack/react-query";
 
 
 const FeaturedFoods = () => {
-      const [foods , setFoods]= useState([])
-      useEffect(()=>{
-          axios('http://localhost:5000/foods')
-          .then(res => setFoods(res.data))
-      },[])
-      
+     const{ isPending,isError,error, data: foods}=useQuery({
+          queryKey:['foods'],
+          queryFn: async ()=>{
+               const res = await fetch('http://localhost:5000/foods');
+               return res.json()
+          }
+     })
+  
+      if(isPending){
+          return <span className="loading loading-spinner text-primary"></span>
+      }
+     if(isError){
+          return <p> {error.message} </p>
+     }
       
      return (
           <div className="mb-4">
