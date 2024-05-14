@@ -7,7 +7,7 @@ const FeaturedFoods = () => {
      const{ isPending,isError,error, data: foods}=useQuery({
           queryKey:['foods'],
           queryFn: async ()=>{
-               const res = await fetch('http://localhost:5000/foods');
+               const res = await fetch('https://food-sharing-server-ten.vercel.app/foods');
                return res.json()
           }
      })

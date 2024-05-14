@@ -22,6 +22,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import Private from './Layout/Private';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,17 +39,17 @@ const router = createBrowserRouter([
       },
       {
         path:'/addFood',
-        element:<AddFood></AddFood>
+        element:<Private><AddFood></AddFood></Private>
 
       },
      
       {
         path:'/manageFoods',
-        element: <ManageMyFood></ManageMyFood>
+        element: <Private> <ManageMyFood></ManageMyFood></Private>
       },
       {
         path:'/myFoodRequest',
-        element: <MyFoodRequest></MyFoodRequest>
+        element:<Private> <MyFoodRequest></MyFoodRequest></Private>
       },{
         path:'/login',
         element: <Login></Login>
@@ -58,13 +59,13 @@ const router = createBrowserRouter([
         element:<Register></Register>
       },{
         path:'/food/:id',
-        element:<FoodCardDetails></FoodCardDetails>,
-        loader:({params})=> fetch(`http://localhost:5000/food/${params.id}`)  
+        element:<Private><FoodCardDetails></FoodCardDetails></Private>,
+        loader:({params})=> fetch(`https://food-sharing-server-ten.vercel.app/food/${params.id}`)  
       },
       {
         path:'/update/:id',
         element: <Update></Update>,
-        loader:({params})=> fetch(`http://localhost:5000/foods/${params.id}`)  
+        loader:({params})=> fetch(`https://food-sharing-server-ten.vercel.app/foods/${params.id}`)  
       }
     ]
   },

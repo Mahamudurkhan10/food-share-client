@@ -23,7 +23,7 @@ const AddFood = () => {
      const foodStatus = e.target.foodStatus.value;
      const donatedFoods = {email,donator_name,donator_image,food_image,food_name,additional_notes,expired_date,pickup_location,food_quantity,foodStatus}
      console.log(donatedFoods);
-     axios.post('http://localhost:5000/foods', donatedFoods)
+     axios.post('https://food-sharing-server-ten.vercel.app/foods', donatedFoods)
      .then(res =>{
           if(res.data.insertedId){
                Swal.fire({

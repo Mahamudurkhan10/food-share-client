@@ -8,7 +8,7 @@ const AvailableFood = () => {
      const [oldFoods, setOldFoods] = useState([])
 
      useEffect(() => {
-          axios('http://localhost:5000/foods')
+          axios('https://food-sharing-server-ten.vercel.app/foods')
                .then(res => setOldFoods(res.data))
      }, [])
      const handleFilterForm = (e) => {

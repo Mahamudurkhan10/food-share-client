@@ -52,7 +52,7 @@ const Auth = ({children}) => {
                setLoading(false)
                if(currentUser){
                 
-                    axios.post('http://localhost:5000/jwt',verifyUser,{withCredentials:true})
+                    axios.post('https://food-sharing-server-ten.vercel.app/jwt',verifyUser,{withCredentials:true})
               
                     .then(res =>{
                          console.log(res.data);
@@ -60,7 +60,7 @@ const Auth = ({children}) => {
                     })
                }
                else{
-                    axios.post('http://localhost:5000/userOut',verifyUser,{withCredentials:true})
+                    axios.post('https://food-sharing-server-ten.vercel.app/userOut',verifyUser,{withCredentials:true})
                          
                     .then(res =>{
                          console.log(res.data);

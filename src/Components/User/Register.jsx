@@ -61,7 +61,7 @@ const Register = () => {
                          <div className="hero-content flex-row w-full">
                               <div className="text-center  lg:text-left">
 
-                                   <img src="https://i.ibb.co/bXbb8XZ/cloud-computing-modern-flat-concept-for-web-banner-design-man-enters-password-and-login-to-access-cl.jpg" alt="" className="size-[650px] opacity-90" />
+                                   <img src="https://i.ibb.co/bXbb8XZ/cloud-computing-modern-flat-concept-for-web-banner-design-man-enters-password-and-login-to-access-cl.jpg" alt="" className="size-[700px] opacity-90" />
                               </div>
                               <div>
                                    <div className="flex flex-col h-[600px] p-6 rounded-md sm:p-10 dark:bg-gray-100 dark:text-gray-800">

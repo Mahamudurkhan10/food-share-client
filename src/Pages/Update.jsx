@@ -31,7 +31,7 @@ const Update = () => {
           const foodStatus = e.target.foodStatus.value;
           const donatedFoods = {email,donator_name,donator_image,food_image,food_name,additional_notes,expired_date,pickup_location,food_quantity,foodStatus}
           console.log(donatedFoods);
-          axios.put(`http://localhost:5000/foods/${_id}`, donatedFoods)
+          axios.put(`https://food-sharing-server-ten.vercel.app/foods/${_id}`, donatedFoods)
           .then(res =>{
                if(res.data.modifiedCount > 0){
                     Swal.fire({

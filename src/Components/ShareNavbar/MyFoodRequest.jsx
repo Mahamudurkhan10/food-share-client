@@ -7,7 +7,7 @@ const MyFoodRequest = () => {
      const {user}=useContext(AuthContext)
      const [ foods, setFoods]=useState([])
      useEffect(() => {
-          axios(`http://localhost:5000/myFoods/${user?.email}`,{withCredentials: true})
+          axios(`https://food-sharing-server-ten.vercel.app/myFoods/${user?.email}`,{withCredentials: true})
                .then(res => {
                     setFoods(res.data)
                })

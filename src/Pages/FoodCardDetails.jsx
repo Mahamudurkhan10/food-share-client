@@ -1,18 +1,18 @@
 
 import { useContext } from "react";
-import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/Auth";
 import Swal from "sweetalert2";
 import axios from "axios";
 
 
 const FoodCardDetails = () => {
-     const location =useLocation()
+     const location = useLocation()
      const navigate = useNavigate()
- const {user} = useContext(AuthContext)
+     const { user } = useContext(AuthContext)
      const food = useLoaderData();
 
-     
+
      const { food_name,
           food_image,
           food_quantity,
@@ -22,36 +22,36 @@ const FoodCardDetails = () => {
           donator_image,
           donator_name,
           donator_email, _id } = food;
-          const handleRequest = (e)=>{
-               e.preventDefault()
-               const form = e.target;
-               const email = e.target.email.value;
-               const donator_name = e.target.name.value;
-               const donator_image = e.target.photo.value;
-               const food_image = e.target.foodPhoto.value;
-               const food_name = e.target.foodName.value;
-               const additional_notes = e.target.additionalNotes.value;
-               const   expired_date = e.target.expiredDate.value;
-               const  pickup_location = e.target.pickupLocation.value;
-               const food_quantity = e.target.foodQuantity.value;
-               const foodStatus = e.target.foodStatus.value;
-               const requestDate = e.target.requestDate.value;
-               const donatedFoods = {email,donator_name,donator_image, requestDate, food_image,food_name,additional_notes,expired_date,pickup_location,food_quantity,foodStatus}
-               console.log(donatedFoods);
-               axios.post('http://localhost:5000/newFoods', donatedFoods)
-               .then(res =>{
-                    if(res.data.insertedId){
+     const handleRequest = (e) => {
+          e.preventDefault()
+          const form = e.target;
+          const email = e.target.email.value;
+          const donator_name = e.target.name.value;
+          const donator_image = e.target.photo.value;
+          const food_image = e.target.foodPhoto.value;
+          const food_name = e.target.foodName.value;
+          const additional_notes = e.target.additionalNotes.value;
+          const expired_date = e.target.expiredDate.value;
+          const pickup_location = e.target.pickupLocation.value;
+          const food_quantity = e.target.foodQuantity.value;
+          const foodStatus = e.target.foodStatus.value;
+          const requestDate = e.target.requestDate.value;
+          const donatedFoods = { email, donator_name, donator_image, requestDate, food_image, food_name, additional_notes, expired_date, pickup_location, food_quantity, foodStatus }
+          console.log(donatedFoods);
+          axios.post('https://food-sharing-server-ten.vercel.app/newFoods', donatedFoods)
+               .then(res => {
+                    if (res.data.insertedId) {
                          Swal.fire({
                               title: "requested!",
                               text: "Your food has been requested Successfully.",
                               icon: "success"
-          
+
                          });
-                        
+
                     }
-                    navigate(location?.state ? location.state : '/')   
-                } )
-           }
+                    navigate(location?.state ? location.state : '/')
+               })
+     }
      return (
           <div>
                <section className="dark:bg-gray-100 dark:text-gray-800">
@@ -70,11 +70,11 @@ const FoodCardDetails = () => {
                                    <h1> Expired Date : <span className="text-amber-800 font-bold"> {expired_date}</span> </h1>
                               </div>
                               <div>
-                                   {/* Open the modal using document.getElementById('ID').showModal() method */}
+
                                    <button className="btn btn-success w-1/2" onClick={() => document.getElementById('my_modal_5').showModal()}  > Request  </button>
                                    <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                                         <div className="modal-box">
-                                              <h1 className="text-xl font-bold text-blue-600"> Request Box  </h1>
+                                             <h1 className="text-xl font-bold text-blue-600"> Request Box  </h1>
                                              <form onSubmit={handleRequest}>
                                                   <div className="lg:flex flex-col gap-6">
                                                        <div className='form-control '>
@@ -104,7 +104,7 @@ const FoodCardDetails = () => {
                                                   <div className="lg:flex flex-col gap-6">
 
                                                        <div className='form-control   '>
-                               
+
                                                             <label htmlFor="" className='label'>
                                                                  <span className='label-text text-lg '> Donator Photo </span>
                                                             </label>
@@ -136,7 +136,7 @@ const FoodCardDetails = () => {
                                                             </label>
                                                             <div className="join">
 
-                                                                 <input type="text" name="foodName" className="input input-bordered text-sm w-full join-item"  defaultValue={food_name} disabled placeholder="Food Name" />
+                                                                 <input type="text" name="foodName" className="input input-bordered text-sm w-full join-item" defaultValue={food_name} disabled placeholder="Food Name" />
 
                                                             </div>
 
@@ -147,7 +147,7 @@ const FoodCardDetails = () => {
                                                             </label>
                                                             <div className="join">
 
-                                                                 <input type="text" name="additionalNotes" className="input input-bordered text-sm w-full join-item"  defaultValue={additional_notes}  placeholder=" Additional notes " />
+                                                                 <input type="text" name="additionalNotes" className="input input-bordered text-sm w-full join-item" defaultValue={additional_notes} placeholder=" Additional notes " />
 
                                                             </div>
 
@@ -160,7 +160,7 @@ const FoodCardDetails = () => {
                                                             </label>
                                                             <div className="join">
 
-                                                                 <input type="text" name="foodQuantity" className="input input-bordered text-sm w-full join-item"  defaultValue={food_quantity} disabled placeholder="Food Quantity" />
+                                                                 <input type="text" name="foodQuantity" className="input input-bordered text-sm w-full join-item" defaultValue={food_quantity} disabled placeholder="Food Quantity" />
 
                                                             </div>
 
@@ -173,7 +173,7 @@ const FoodCardDetails = () => {
                                                             </label>
                                                             <div className="join">
 
-                                                                 <input type="text" name="pickupLocation" className="input input-bordered text-sm w-full join-item"  defaultValue={pickup_location} disabled  placeholder=" Pickup Location" />
+                                                                 <input type="text" name="pickupLocation" className="input input-bordered text-sm w-full join-item" defaultValue={pickup_location} disabled placeholder=" Pickup Location" />
 
                                                             </div>
 
@@ -186,7 +186,7 @@ const FoodCardDetails = () => {
                                                             </label>
                                                             <div className="join">
 
-                                                                 <input type="date" name="expiredDate" className="input input-bordered text-sm w-full join-item"  defaultValue={expired_date} disabled placeholder="Expired Date" />
+                                                                 <input type="date" name="expiredDate" className="input input-bordered text-sm w-full join-item" defaultValue={expired_date} disabled placeholder="Expired Date" />
 
                                                             </div>
 
@@ -211,7 +211,7 @@ const FoodCardDetails = () => {
                                                             </label>
                                                             <div className="join">
 
-                                                                 <input type="text" name="foodId" className="input input-bordered text-sm w-full join-item"  defaultValue={_id} disabled placeholder="Expired Date" />
+                                                                 <input type="text" name="foodId" className="input input-bordered text-sm w-full join-item" defaultValue={_id} disabled placeholder="Expired Date" />
 
                                                             </div>
 
@@ -235,12 +235,15 @@ const FoodCardDetails = () => {
 
                                              <div className="modal-action">
                                                   <form method="dialog">
-                                                  
+
                                                        <button className="btn  btn-info">Close</button>
                                                   </form>
                                              </div>
                                         </div>
                                    </dialog>
+                              </div>
+                              <div className="mt-5">
+                                   <NavLink to={'/'}><button className="btn w-1/2 btn-info"> Go Back</button></NavLink>
                               </div>
                          </div>
                          <div className="lg:w-1/2 xl:w-3/5 dark:bg-gray-100">

@@ -13,7 +13,7 @@ const ManageMyFood = () => {
      
      console.log(foods);
      useEffect(() => {
-        axios(`http://localhost:5000/myfood/${user?.email}`,{withCredentials: true})
+        axios(`https://food-sharing-server-ten.vercel.app/myfood/${user?.email}`,{withCredentials: true})
               .then(res =>{
                setFoods(res.data)
               })
@@ -32,7 +32,7 @@ const ManageMyFood = () => {
           }).then((result) => {
                if (result.isConfirmed) {
 
-                    fetch(`http://localhost:5000/foods/${_id}`, {
+                    fetch(`https://food-sharing-server-ten.vercel.app/foods/${_id}`, {
                          method: 'DELETE'
                     }
                     )

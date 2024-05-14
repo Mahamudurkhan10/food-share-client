@@ -67,7 +67,7 @@ const Login = () => {
                          <div className="hero-content flex-row w-full">
                               <div className="text-center  lg:text-left">
 
-                                   <img src="https://i.ibb.co/bXbb8XZ/cloud-computing-modern-flat-concept-for-web-banner-design-man-enters-password-and-login-to-access-cl.jpg" alt="" className="size-[650px] opacity-90" />
+                                   <img src="https://i.ibb.co/bXbb8XZ/cloud-computing-modern-flat-concept-for-web-banner-design-man-enters-password-and-login-to-access-cl.jpg" alt="" className="size-[700px] opacity-90" />
                               </div>
                               <div className="w-1/2 max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
                                    <h2 className="mb-3 text-3xl font-bold text-yellow-400 text-center">Login to your account</h2>
