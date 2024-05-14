@@ -16,9 +16,11 @@ import Register from './Components/User/Register';
 import Auth from './AuthProvider/Auth';
 import FoodCardDetails from './Pages/FoodCardDetails';
 import Update from './Pages/Update';
+import Error from './Components/Home/Error';
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <Error></Error> ,
     element: <Main></Main>,
     children:[
       {

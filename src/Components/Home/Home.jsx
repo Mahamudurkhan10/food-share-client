@@ -1,5 +1,7 @@
+import AskQuestion from "./AskQuestion";
 import Banner from "./Banner";
 import FeaturedFoods from "./FeaturedFoods";
+import Price from "./Price";
 
 
 const Home = () => {
@@ -7,6 +9,8 @@ const Home = () => {
           <div>
                <Banner></Banner>
                <FeaturedFoods></FeaturedFoods>
+               <Price></Price>
+               <AskQuestion></AskQuestion>
           </div>
      );
 };
