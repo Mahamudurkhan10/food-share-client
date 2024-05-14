@@ -2,6 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword,
 
 import {  createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.config";
+import axios from "axios";
 
 
 
@@ -45,8 +46,26 @@ const Auth = ({children}) => {
      
      useEffect(()=>{
           const unFollow = onAuthStateChanged(auth,currentUser =>{
+               const userEmail = currentUser?.email || user?.email;
+               const verifyUser = {email: userEmail};
                setUser(currentUser)
                setLoading(false)
+               if(currentUser){
+                
+                    axios.post('http://localhost:5000/jwt',verifyUser,{withCredentials:true})
+              
+                    .then(res =>{
+                         console.log(res.data);
+                        
+                    })
+               }
+               else{
+                    axios.post('http://localhost:5000/userOut',verifyUser,{withCredentials:true})
+                         
+                    .then(res =>{
+                         console.log(res.data);
+                    })
+               }
           })
           return ()=>{
                unFollow

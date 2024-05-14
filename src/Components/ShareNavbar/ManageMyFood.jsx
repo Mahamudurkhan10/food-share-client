@@ -1,22 +1,25 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/Auth";
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const ManageMyFood = () => {
      const { user } = useContext(AuthContext)
-
+ 
      const [foods, setFoods] = useState([])
+     
      console.log(foods);
      useEffect(() => {
-          fetch(`http://localhost:5000/myfood/${user?.email}`)
-               .then(res => res.json())
-               .then(data => {
-                    setFoods(data)
-
-               })
+        axios(`http://localhost:5000/myfood/${user?.email}`,{withCredentials: true})
+              .then(res =>{
+               setFoods(res.data)
+              })
+          //     .then(data => {
+          //      setFoods(data)
+          //     })
      }, [user])
      const  handleDelete = (_id) => {
           console.log(_id)

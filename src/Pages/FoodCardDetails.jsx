@@ -1,14 +1,18 @@
 
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/Auth";
 import Swal from "sweetalert2";
 import axios from "axios";
 
 
 const FoodCardDetails = () => {
+     const location =useLocation()
+     const navigate = useNavigate()
  const {user} = useContext(AuthContext)
      const food = useLoaderData();
+
+     
      const { food_name,
           food_image,
           food_quantity,
@@ -43,8 +47,9 @@ const FoodCardDetails = () => {
                               icon: "success"
           
                          });
-                         form.reset()
+                        
                     }
+                    navigate(location?.state ? location.state : '/')   
                 } )
            }
      return (
@@ -66,7 +71,7 @@ const FoodCardDetails = () => {
                               </div>
                               <div>
                                    {/* Open the modal using document.getElementById('ID').showModal() method */}
-                                   <button className="btn btn-success w-1/2" onClick={() => document.getElementById('my_modal_5').showModal()}> Request  </button>
+                                   <button className="btn btn-success w-1/2" onClick={() => document.getElementById('my_modal_5').showModal()}  > Request  </button>
                                    <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                                         <div className="modal-box">
                                               <h1 className="text-xl font-bold text-blue-600"> Request Box  </h1>
