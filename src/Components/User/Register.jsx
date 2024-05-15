@@ -3,7 +3,9 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/Auth";
 import Swal from "sweetalert2";
 
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init()
 const Register = () => {
      const {register, updatePP}= useContext(AuthContext)
      // const  [ showPassword,setShowPassword]=useState(false)
@@ -52,19 +54,19 @@ const Register = () => {
      }
      return (
           <div>
-               <div className="mt-7 mb-9">
+               <div className="lg:mt-7 mb-[560px] lg:mb-9"data-aos="fade-down" data-aos-delay="200">
                     <div className=" mb-4 p-4 text-center bg-gray-50">
                          <h1 className="text-5xl font-extrabold text-green-700"> Register Here  </h1>
                     </div>
                     <div className="hero h-[800px] bg-green-50">
 
-                         <div className="hero-content flex-row w-full">
+                         <div className="hero-content  flex-col lg:flex-row w-full">
                               <div className="text-center  lg:text-left">
 
                                    <img src="https://i.ibb.co/bXbb8XZ/cloud-computing-modern-flat-concept-for-web-banner-design-man-enters-password-and-login-to-access-cl.jpg" alt="" className="size-[700px] opacity-90" />
                               </div>
                               <div>
-                                   <div className="flex flex-col h-[600px] p-6 rounded-md sm:p-10 dark:bg-gray-100 dark:text-gray-800">
+                                   <div className="flex flex-col  lg:h-[600px] p-6 rounded-md sm:p-10 dark:bg-gray-100 dark:text-gray-800">
                                         <div className="mb-8 text-center">
                                              <h1 className="my-3 text-4xl font-bold text-yellow-400"> Register</h1>
                                              <p className="text-sm dark:text-gray-600"> Register to create your account</p>

@@ -53,10 +53,10 @@ const FoodCardDetails = () => {
                })
      }
      return (
-          <div>
-               <section className="dark:bg-gray-100 dark:text-gray-800">
+          <div className="mb-6">
+               <section className="dark:bg-gray-100  dark:text-gray-800">
                     <div className="container flex flex-col-reverse mx-auto lg:flex-row">
-                         <div className="text-lg w-1/2 font-medium mt-12 text-center">
+                         <div className="text-lg lg:w-1/2 font-medium mt-12 text-center">
                               <div className="mb-4">
                                    <h1 className="text-blue-700 mb-4"> Donar Name : <span className="text-xl font-bold text-green-600"> {donator_name}</span>  </h1>
                                    <h1 className="text-sm w-3/5 mx-auto text-pink-400 "> Food Pickup Location : <span className="font-bold text-sm"> {pickup_location} </span> </h1>

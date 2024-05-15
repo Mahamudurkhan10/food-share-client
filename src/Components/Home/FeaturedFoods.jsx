@@ -1,8 +1,9 @@
 
 import FoodCard from "../../Pages/FoodCard";
 import { useQuery } from "@tanstack/react-query";
-
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init()
 const FeaturedFoods = () => {
      const{ isPending,isError,error, data: foods}=useQuery({
           queryKey:['foods'],
@@ -25,7 +26,7 @@ const FeaturedFoods = () => {
                     <h1 className="text-4xl font-bold text"> Featured Foods </h1>
                     <p className="w-1/2 mx-auto"> Featured foods can vary depending on various factors such as cultural preferences, seasonal availability, and culinary trends.</p>
                </div>
-                <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 md:grid-cols-2">
+                <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 md:grid-cols-2" data-aos="zoom-in-down" data-aos-delay="200">
                     {
                          foods.slice(0,6).map(food => <FoodCard key={food._id} food={food}></FoodCard>)
                     }

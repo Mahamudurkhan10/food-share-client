@@ -2,7 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init()
 const AvailableFood = () => {
      const [foods, setFoods] = useState([])
      const [oldFoods, setOldFoods] = useState([])
@@ -35,7 +37,7 @@ const AvailableFood = () => {
      }
 
      return (
-          <div>
+          <div data-aos="fade-down" data-aos-delay="200">
                <div className="text-center">
                     <h1 className="text-5xl font-bold text-green-600"> Available Food </h1>
                </div>
@@ -62,7 +64,7 @@ const AvailableFood = () => {
                     </details>
                </div>
                     <div className="flex lg:justify-end  justify-center lg:mb-10">
-                         <details className="dropdown  lg:dropdown-left lg:p-5  ">
+                         <details className="dropdown-right  lg:dropdown-left lg:p-5  ">
                               <summary className="m-1 mt-2 font-bold text-sky-600 text-2xl btn"> Sort </summary>
                               <ul className="p-2 text-emerald-500 font-bold shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
 
@@ -77,7 +79,7 @@ const AvailableFood = () => {
                          </details>
                     </div>
                </div>
-               <div className="grid mb-8 gap-4 md:grid-cols-2 lg:grid-cols-3 grid-cols-1">
+               <div className="grid mb-8 gap-4 md:grid-cols-2 lg:grid-cols-3 grid-cols-1"  >
                     {
                          foods.map(food => <div key={food._id}>
 

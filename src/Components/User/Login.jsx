@@ -2,7 +2,9 @@ import { useContext, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/Auth";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init()
 
 const Login = () => {
      const { googleLogin, loginPass, githubLogin } = useContext(AuthContext)
@@ -52,19 +54,21 @@ const Login = () => {
      const handleGoogle = () => {
 
           googleLogin()
+          navigate(location?.state ? location.state : '/')
      }
      const handleGithub = () => {
           githubLogin()
+          navigate(location?.state ? location.state : '/')
      }
      return (
           <div>
-               <div className="mt-7 mb-9">
+               <div className="mt-7 mb-9" data-aos="fade-down" data-aos-delay="200">
                     <div className=" mb-4 p-3 text-center bg-gray-50">
                          <h1 className="text-5xl font-extrabold text-green-700"> Login Here  </h1>
                     </div>
                     <div className="hero h-[800] bg-green-50">
 
-                         <div className="hero-content flex-row w-full">
+                         <div className="hero-content lg:flex-row flex-col w-full">
                               <div className="text-center  lg:text-left">
 
                                    <img src="https://i.ibb.co/bXbb8XZ/cloud-computing-modern-flat-concept-for-web-banner-design-man-enters-password-and-login-to-access-cl.jpg" alt="" className="size-[700px] opacity-90" />

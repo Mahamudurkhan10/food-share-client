@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/Auth";
 import { LuLogOut } from "react-icons/lu";
 import { MdFoodBank } from "react-icons/md";
+
 const Navbar = () => {
   const {user,logOut}= useContext(AuthContext)
   const [theme, setTheme] = useState('light')
