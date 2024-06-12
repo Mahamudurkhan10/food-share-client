@@ -11,7 +11,7 @@ const Home = () => {
                <Banner></Banner>
                <FeaturedFoods></FeaturedFoods>
                 <div className="w-1/2 text-center  mx-auto">
-                  <NavLink>   <button className="btn btn-success text-yellow-300 font-bold"> Show ALL Foods </button></NavLink>
+                  <NavLink to={'/availableFoods'}>   <button className="btn btn-success text-yellow-300 font-bold"> Show ALL Foods </button></NavLink>
                 </div>
                <Price></Price>
                <AskQuestion></AskQuestion>
