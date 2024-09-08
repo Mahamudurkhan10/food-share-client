@@ -26,7 +26,7 @@ import Private from './Layout/Private';
 const router = createBrowserRouter([
   {
     path: "/",
-    errorElement: <Error></Error> ,
+     
     element: <Main></Main>,
     children:[
       {
@@ -68,7 +68,10 @@ const router = createBrowserRouter([
         loader:({params})=> fetch(`https://food-sharing-server-ten.vercel.app/foods/${params.id}`)  
       }
     ]
-  },
+  },{
+    path:'*',
+    element: <Error></Error>
+  }
 ]);
 
 const queryClient = new QueryClient()
