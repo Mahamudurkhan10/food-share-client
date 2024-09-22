@@ -1,7 +1,7 @@
 # My website link : https://food-sharing-client-d4349.web.app/
 # my features
 - Responsive design
-- User friendly
+- User friendly ui design
 - Build in react js
 - server side added 
 - filter done 
